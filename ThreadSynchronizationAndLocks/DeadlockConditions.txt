@@ -1,0 +1,13 @@
+Necessary Conditions for Deadlock:
+
+The four necessary conditions for a deadlock to arise are as follows.
+
+1. Mutual Exclusion: Only one process can use a resource at any given time i.e. the resources are non-sharable.
+2. Hold and wait: A process is holding at least one resource at a time and is waiting to acquire other resources held by some other process.
+3. No preemption: The resource can be released by a process voluntarily i.e. after execution of the process.
+4. Circular Wait: A set of processes are waiting for each other, to release a resource, in a circular fashion. This creates a circular relation between all these processes and they have to wait forever to be executed.
+
+Tips:
+-Setting an order on which locks are required can prevent a circular wait condition
+-Not having nested locks (Hold and wait) can also prevent a deadlock
+-Ability to preempt or allow deadlocks and detect and stop program if they do are only other solutions 

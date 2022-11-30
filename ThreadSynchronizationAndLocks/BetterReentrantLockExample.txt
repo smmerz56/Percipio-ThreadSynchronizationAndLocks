@@ -1,0 +1,25 @@
+Consider the following case in which you need a set of operations which isn't atomic, be atomic. 
+For example you may want to set a value of an array but return its current value upon setting. (try-finally removed for brevity).
+
+
+
+final ReentrantLock lock = new ReentrantLock();
+
+final Object[] objects = new Object[10]
+public Object setAndReturnPrevious(int index, Object val){
+   lock.lock();
+      Object prev = get(index);
+      set(index,val);
+      return prev;
+   lock.unlock();
+}
+public void set(int index, Object val){
+    lock.lock();
+         objects[index] = val;
+    lock.unlock();
+}
+public Object get(index index){...}
+
+
+
+If ReentrantLock wasn't reentrant you would deadlock at get(index)
